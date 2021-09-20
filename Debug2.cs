@@ -16,13 +16,18 @@ public static class Debug2
 
     public static void DrawArrow(Vector2 arrowOrigin, Vector2 arrowPoint, Color col)
     {
+        DrawArrow(arrowOrigin, arrowPoint, col, 0.2f);
+    }
+
+    public static void DrawArrow(Vector2 arrowOrigin, Vector2 arrowPoint, Color col, float arrowheadSize)
+    {
         Vector2 beginToEnd = (arrowPoint - arrowOrigin).normalized;
 
         Vector2 perp = Vector2.Perpendicular(beginToEnd);
 
         Debug.DrawLine(arrowOrigin, arrowPoint, col);
-        Debug.DrawLine(arrowPoint, arrowPoint - (beginToEnd * 0.2f) + (perp * 0.2f), col);
-        Debug.DrawLine(arrowPoint, arrowPoint - (beginToEnd * 0.2f) - (perp * 0.2f), col);
+        Debug.DrawLine(arrowPoint, arrowPoint - (beginToEnd * arrowheadSize) + (perp * arrowheadSize), col);
+        Debug.DrawLine(arrowPoint, arrowPoint - (beginToEnd * arrowheadSize) - (perp * arrowheadSize), col);
     }
 
     public static void DrawBounds(Bounds bounds)
