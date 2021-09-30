@@ -2,10 +2,19 @@ using UnityEngine;
 
 namespace Reccy.DebugExtensions
 {
-    // Wake up, New Debug just dropped!
     public static class Debug2
     {
-        public static void DrawCross(Vector2 pos, Color col, float scale = 0.2f)
+        public static void DrawCross(Vector2 pos)
+        {
+            DrawCross(pos, Color.red);
+        }
+
+        public static void DrawCross(Vector2 pos, Color col)
+        {
+            DrawCross(pos, col, 0.2f);
+        }
+
+        public static void DrawCross(Vector2 pos, Color col, float scale)
         {
             Vector3 topLeft = pos + (Vector2.left * scale) + (Vector2.up * scale);
             Vector3 topRight = pos + (Vector2.right * scale) + (Vector2.up * scale);
@@ -16,20 +25,25 @@ namespace Reccy.DebugExtensions
             Debug.DrawLine(topRight, botLeft, col);
         }
 
-        public static void DrawArrow(Vector2 arrowOrigin, Vector2 arrowPoint, Color col)
+        public static void DrawArrow(Vector2 arrowOrigin, Vector2 arrowTarget)
         {
-            DrawArrow(arrowOrigin, arrowPoint, col, 0.2f);
+            DrawArrow(arrowOrigin, arrowTarget, Color.red);
         }
 
-        public static void DrawArrow(Vector2 arrowOrigin, Vector2 arrowPoint, Color col, float arrowheadSize)
+        public static void DrawArrow(Vector2 arrowOrigin, Vector2 arrowTarget, Color col)
         {
-            Vector2 beginToEnd = (arrowPoint - arrowOrigin).normalized;
+            DrawArrow(arrowOrigin, arrowTarget, col, 0.2f);
+        }
+
+        public static void DrawArrow(Vector2 arrowOrigin, Vector2 arrowTarget, Color col, float arrowheadSize)
+        {
+            Vector2 beginToEnd = (arrowTarget - arrowOrigin).normalized;
 
             Vector2 perp = Vector2.Perpendicular(beginToEnd);
 
-            Debug.DrawLine(arrowOrigin, arrowPoint, col);
-            Debug.DrawLine(arrowPoint, arrowPoint - (beginToEnd * arrowheadSize) + (perp * arrowheadSize), col);
-            Debug.DrawLine(arrowPoint, arrowPoint - (beginToEnd * arrowheadSize) - (perp * arrowheadSize), col);
+            Debug.DrawLine(arrowOrigin, arrowTarget, col);
+            Debug.DrawLine(arrowTarget, arrowTarget - (beginToEnd * arrowheadSize) + (perp * arrowheadSize), col);
+            Debug.DrawLine(arrowTarget, arrowTarget - (beginToEnd * arrowheadSize) - (perp * arrowheadSize), col);
         }
 
         public static void DrawBounds(Bounds bounds)
