@@ -4,46 +4,46 @@ namespace Reccy.DebugExtensions
 {
     public static class Debug2
     {
-        public static void DrawCross(Vector2 pos)
+        public static void DrawCross(Vector3 pos)
         {
             DrawCross(pos, Color.red);
         }
 
-        public static void DrawCross(Vector2 pos, Color col)
+        public static void DrawCross(Vector3 pos, Color col)
         {
             DrawCross(pos, col, 0.2f);
         }
 
-        public static void DrawCross(Vector2 pos, Color col, float scale)
+        public static void DrawCross(Vector3 pos, Color col, float scale)
         {
-            Vector3 topLeft = pos + (Vector2.left * scale) + (Vector2.up * scale);
-            Vector3 topRight = pos + (Vector2.right * scale) + (Vector2.up * scale);
-            Vector3 botLeft = pos + (Vector2.left * scale) + (Vector2.down * scale);
-            Vector3 botRight = pos + (Vector2.right * scale) + (Vector2.down * scale);
+            Vector3 topLeft = pos + (Vector3.left * scale) + (Vector3.up * scale);
+            Vector3 topRight = pos + (Vector3.right * scale) + (Vector3.up * scale);
+            Vector3 botLeft = pos + (Vector3.left * scale) + (Vector3.down * scale);
+            Vector3 botRight = pos + (Vector3.right * scale) + (Vector3.down * scale);
 
             Debug.DrawLine(topLeft, botRight, col);
             Debug.DrawLine(topRight, botLeft, col);
         }
 
-        public static void DrawArrow(Vector2 arrowOrigin, Vector2 arrowTarget)
+        public static void DrawArrow(Vector3 arrowOrigin, Vector3 arrowTarget)
         {
             DrawArrow(arrowOrigin, arrowTarget, Color.red);
         }
 
-        public static void DrawArrow(Vector2 arrowOrigin, Vector2 arrowTarget, Color col)
+        public static void DrawArrow(Vector3 arrowOrigin, Vector3 arrowTarget, Color col)
         {
             DrawArrow(arrowOrigin, arrowTarget, col, 0.2f);
         }
 
-        public static void DrawArrow(Vector2 arrowOrigin, Vector2 arrowTarget, Color col, float arrowheadSize)
+        public static void DrawArrow(Vector3 arrowOrigin, Vector3 arrowTarget, Color col, float arrowheadSize)
         {
-            Vector2 beginToEnd = (arrowTarget - arrowOrigin).normalized;
+            Vector3 beginToEnd = (arrowTarget - arrowOrigin).normalized;
 
             Vector2 perp = Vector2.Perpendicular(beginToEnd);
 
             Debug.DrawLine(arrowOrigin, arrowTarget, col);
-            Debug.DrawLine(arrowTarget, arrowTarget - (beginToEnd * arrowheadSize) + (perp * arrowheadSize), col);
-            Debug.DrawLine(arrowTarget, arrowTarget - (beginToEnd * arrowheadSize) - (perp * arrowheadSize), col);
+            Debug.DrawLine(arrowTarget, arrowTarget - (beginToEnd * arrowheadSize) + (Vector3)(perp * arrowheadSize), col);
+            Debug.DrawLine(arrowTarget, arrowTarget - (beginToEnd * arrowheadSize) - (Vector3)(perp * arrowheadSize), col);
         }
 
         public static void DrawBounds(Bounds bounds)
