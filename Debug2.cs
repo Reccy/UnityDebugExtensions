@@ -53,5 +53,11 @@ namespace Reccy.DebugExtensions
             Debug.DrawLine(new Vector3(bounds.max.x, bounds.max.y), new Vector3(bounds.max.x, bounds.min.y), Color.blue);
             Debug.DrawLine(new Vector3(bounds.max.x, bounds.min.y), new Vector3(bounds.min.x, bounds.min.y), Color.blue);
         }
+
+        public static void DrawBounds(BoundsInt bounds)
+        {
+            Bounds b = new Bounds(bounds.center, bounds.size);
+            DrawBounds(b);
+        }
     }
 }
