@@ -25,6 +25,21 @@ namespace Reccy.DebugExtensions
             Debug.DrawLine(topRight, botLeft, col);
         }
 
+        public static void DrawArrow(Ray ray, float distance)
+        {
+            DrawArrow(ray, distance, Color.red);
+        }
+
+        public static void DrawArrow(Ray ray, float distance, Color col)
+        {
+            DrawArrow(ray, distance, col, 0.2f);
+        }
+
+        public static void DrawArrow(Ray ray, float distance, Color col, float arrowheadSize)
+        {
+            DrawArrow(ray.origin, ray.origin + ray.direction * distance, col, arrowheadSize);
+        }
+
         public static void DrawArrow(Vector3 arrowOrigin, Vector3 arrowTarget)
         {
             DrawArrow(arrowOrigin, arrowTarget, Color.red);
