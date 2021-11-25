@@ -4,14 +4,29 @@ namespace Reccy.DebugExtensions
 {
     public static class Debug2
     {
+        public static void DrawCross(Vector2Int pos)
+        {
+            DrawCross((Vector3Int)pos);
+        }
+
         public static void DrawCross(Vector3 pos)
         {
             DrawCross(pos, Color.red);
         }
 
+        public static void DrawCross(Vector2Int pos, Color col)
+        {
+            DrawCross((Vector3Int)pos, col);
+        }
+
         public static void DrawCross(Vector3 pos, Color col)
         {
             DrawCross(pos, col, 0.2f);
+        }
+
+        public static void DrawCross(Vector2Int pos, Color col, float scale)
+        {
+            DrawCross((Vector3Int)pos, col, scale);
         }
 
         public static void DrawCross(Vector3 pos, Color col, float scale)
@@ -40,14 +55,29 @@ namespace Reccy.DebugExtensions
             DrawArrow(ray.origin, ray.origin + ray.direction * distance, col, arrowheadSize);
         }
 
+        public static void DrawArrow(Vector2Int arrowOrigin, Vector2Int arrowTarget)
+        {
+            DrawArrow((Vector3Int)arrowOrigin, (Vector3Int)arrowTarget, Color.red);
+        }
+
         public static void DrawArrow(Vector3 arrowOrigin, Vector3 arrowTarget)
         {
             DrawArrow(arrowOrigin, arrowTarget, Color.red);
         }
 
+        public static void DrawArrow(Vector2Int arrowOrigin, Vector2Int arrowTarget, Color col)
+        {
+            DrawArrow((Vector3Int)arrowOrigin, (Vector3Int)arrowTarget, col, 0.2f);
+        }
+
         public static void DrawArrow(Vector3 arrowOrigin, Vector3 arrowTarget, Color col)
         {
             DrawArrow(arrowOrigin, arrowTarget, col, 0.2f);
+        }
+
+        public static void DrawArrow(Vector2Int arrowOrigin, Vector2Int arrowTarget, Color col, float arrowheadSize)
+        {
+            DrawArrow((Vector3Int)arrowOrigin, (Vector3Int)arrowTarget, col, arrowheadSize);
         }
 
         public static void DrawArrow(Vector3 arrowOrigin, Vector3 arrowTarget, Color col, float arrowheadSize)
